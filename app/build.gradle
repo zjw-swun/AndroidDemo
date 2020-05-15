@@ -30,22 +30,22 @@ android {
         resValue("string", "growingio_url_scheme", "growing.9b4f02dc593cf331")
 
         manifestPlaceholders = [
-                PACKAGE_NAME        : "com.growingio.giodemo",
+                PACKAGE_NAME         : "com.growingio.giodemo",
 
-                GPUSH_XIAOMI_APP_ID : "2882303761518008990",
-                GPUSH_XIAOMI_APP_KEY: "5161800834990",
+                GPUSH_XIAOMI_APP_ID  : "2882303761518008990",
+                GPUSH_XIAOMI_APP_KEY : "5161800834990",
 
-                GPUSH_HUAWEI_APP_ID : "101808059",
+                GPUSH_HUAWEI_APP_ID  : "101808059",
 
-                GPUSH_MEIZU_APP_ID  : "121348",
-                GPUSH_MEIZU_APP_KEY : "7bf587c9769441a9b70a951805d247d2",
+                GPUSH_MEIZU_APP_ID   : "121348",
+                GPUSH_MEIZU_APP_KEY  : "7bf587c9769441a9b70a951805d247d2",
 
-                GPUSH_OPPO_APP_ID : "30169084",
-                GPUSH_OPPO_APP_KEY : "d5b8de18e1b34de9950e003321355ae4",
-                GPUSH_OPPO_APP_SECRET : "0e6cdaea2cee49c48bc449472674a71c",
+                GPUSH_OPPO_APP_ID    : "30169084",
+                GPUSH_OPPO_APP_KEY   : "d5b8de18e1b34de9950e003321355ae4",
+                GPUSH_OPPO_APP_SECRET: "0e6cdaea2cee49c48bc449472674a71c",
 
-                GPUSH_VIVO_APP_KEY : "d04a505a-acee-42ac-8663-df7f71038ab3",
-                GPUSH_VIVO_APP_ID : "16033",
+                GPUSH_VIVO_APP_KEY   : "d04a505a-acee-42ac-8663-df7f71038ab3",
+                GPUSH_VIVO_APP_ID    : "16033",
         ]
 
     }
@@ -102,7 +102,6 @@ repositories {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/miit_mdid_1.0.10.aar')
-    implementation files('libs/gpush-huawei-adapter-1.3.1.aar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
@@ -119,11 +118,17 @@ dependencies {
 
     //GrowingIO 触达 SDK
     implementation 'com.squareup.okhttp3:okhttp:3.12.1'
-    implementation 'com.growingio.android:gtouch:'+ GTouch_SDK_VERSION
-    implementation 'com.growingio.android.widget:gtouch-banner:'+ GTouch_SDK_VERSION
-    implementation 'com.growingio.android.gpush:gpush-huawei-adapter:'+ GTouch_SDK_VERSION
+    implementation 'com.growingio.android:gtouch:' + GTouch_SDK_VERSION
+    implementation 'com.growingio.android.widget:gtouch-banner:' + GTouch_SDK_VERSION
+    implementation 'com.growingio.android.gpush:gpush-huawei-adapter:' + GTouch_SDK_VERSION
     implementation 'com.growingio.android.gpush:gpush-meizu-adapter:' + GTouch_SDK_VERSION
     implementation 'com.growingio.android.gpush:gpush-xiaomi-adapter:' + GTouch_SDK_VERSION
     implementation 'com.growingio.android.gpush:gpush-oppo-adapter:' + GTouch_SDK_VERSION
     implementation 'com.growingio.android.gpush:gpush-vivo-adapter:' + GTouch_SDK_VERSION
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.growingio.android.gpush:gpush-huawei-adapte:1.3.2'
+    }
 }
